@@ -1,31 +1,37 @@
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
-import Signup from "./pages/auth/Signup";
-import Login from "./pages/auth/Login";
-import ForgotPassword from "./pages/auth/ForgotPassword";
-import ResetPassword from "./pages/auth/ResetPassword";
-import UpdatePassword from "./pages/auth/UpdatePassword";
+// src/App.jsx
+import { Routes, Route } from "react-router-dom";
+import DashboardLayout from "./layouts/DashboardLayout";
 
-function App() {
+// Student Dashboard Pages
+import DashboardHome from "./pages/student/dashboard/DashboardHome";
+import EnrolledCourses from "./pages/student/dashboard/Courses/EnrolledCourses";
+import AvailableCourses from "./pages/student/dashboard/Courses/AvailableCourses";
+import Assignments from "./pages/student/dashboard/Assessments/Assignments";
+import Quizzes from "./pages/student/dashboard/Assessments/Quizzes";
+import LiveClasses from "./pages/student/dashboard/Classes/LiveClasses";
+import RecordedClasses from "./pages/student/dashboard/Classes/RecordedClasses";
+import DiscussionForum from "./pages/student/dashboard/DiscussionForum";
+import Certificates from "./pages/student/dashboard/Certificates";
+import Resources from "./pages/student/dashboard/Resources";
+import ProfileSettings from "./pages/student/dashboard/ProfileSettings";
+
+export default function App() {
   return (
-    <BrowserRouter>
-      <nav className="bg-[#2A2A3D] p-4 flex gap-4 justify-center flex-wrap">
-        <Link to="/signup" className="hover:text-[#4B6EF5]">Signup</Link>
-        <Link to="/login" className="hover:text-[#4B6EF5]">Login</Link>
-        <Link to="/forgot-password" className="hover:text-[#4B6EF5]">Forgot Password</Link>
-        <Link to="/reset-password" className="hover:text-[#4B6EF5]">Reset Password</Link>
-        <Link to="/update-password" className="hover:text-[#4B6EF5]">Update Password</Link>
-      </nav>
-
-      <Routes>
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/forgot-password" element={<ForgotPassword />} />
-        <Route path="/reset-password" element={<ResetPassword />} />
-        <Route path="/update-password" element={<UpdatePassword />} />
-        <Route path="/" element={<Signup />} /> {/* default */}
-      </Routes>
-    </BrowserRouter>
+    <Routes>
+      {/* Student Dashboard Preview */}
+      <Route path="/*" element={<DashboardLayout role="student" />}>
+        <Route path="dashboard" element={<DashboardHome />} />
+        <Route path="courses/enrolled" element={<EnrolledCourses />} />
+        <Route path="courses/available" element={<AvailableCourses />} />
+        <Route path="assessments/assignments" element={<Assignments />} />
+        <Route path="assessments/quizzes" element={<Quizzes />} />
+        <Route path="classes/live" element={<LiveClasses />} />
+        <Route path="classes/recorded" element={<RecordedClasses />} />
+        <Route path="discussionforum" element={<DiscussionForum />} />
+        <Route path="certificates" element={<Certificates />} />
+        <Route path="resources" element={<Resources />} />
+        <Route path="profile" element={<ProfileSettings />} />
+      </Route>
+    </Routes>
   );
 }
-
-export default App;

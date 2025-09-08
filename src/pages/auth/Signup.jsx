@@ -21,8 +21,8 @@ export default function Signup() {
       <div className="bg-[#2A2A3D] p-8 rounded-xl shadow-lg w-full max-w-md">
         <h2 className="text-2xl font-bold text-center mb-6">Sign Up</h2>
         <form onSubmit={handleSubmit}>
-          <InputField label="Full Name" value={fullName} onChange={e => setFullName(e.target.value)} placeholder="John Doe" />
-          <InputField label="Email" type="email" value={email} onChange={e => setEmail(e.target.value)} placeholder="you@example.com" />
+          <InputField label="Full Name" value={fullName} onChange={e => setFullName(e.target.value)}/>
+          <InputField label="Email" type="email" value={email} onChange={e => setEmail(e.target.value)}/>
           <PasswordInput label="Password" value={password} onChange={e => setPassword(e.target.value)} />
           <PasswordInput label="Confirm Password" value={confirmPassword} onChange={e => setConfirmPassword(e.target.value)} />
           <div className="mb-4">

@@ -4,7 +4,6 @@ import "../../styles/index.css"; // Your global CSS
 
 export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
-
   const togglePassword = () => setShowPassword(!showPassword);
 
   return (
@@ -13,7 +12,10 @@ export default function Login() {
       {/* Left Section (Image + Branding) */}
       <div
         className="hidden lg:flex w-1/2 bg-cover bg-center items-center justify-center"
-        style={{ backgroundImage: "url('https://source.unsplash.com/800x1200/?technology,code')" }}
+        style={{
+          backgroundImage:
+            "url('https://source.unsplash.com/800x1200/?technology,code')",
+        }}
       >
         <div className="bg-black bg-opacity-50 p-8 rounded-xl text-center">
           <img src="your-logo.png" alt="Logo" className="mx-auto w-24 mb-4" />
