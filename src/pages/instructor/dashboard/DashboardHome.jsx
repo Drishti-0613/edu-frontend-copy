@@ -1,5 +1,5 @@
 // src/pages/instructor/dashboard/DashboardHome.jsx
-import StatsCard from "@/components/StatsCard";
+import StatsCard from "@/components/Statscard";
 import { THEME } from "@/config/themeConfig";
 
 export default function DashboardHome() {
