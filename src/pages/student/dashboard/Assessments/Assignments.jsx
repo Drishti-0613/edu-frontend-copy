@@ -1,27 +1,39 @@
+// src/pages/student/dashboard/Assignments.jsx
+import { THEME } from "@/config/themeConfig";
+const theme = THEME.light;
+
 export default function Assignments() {
   const assignments = [
-    { id: 1, title: "React Components", due: "2025-09-15", status: "Pending" },
-    { id: 2, title: "Java Basics", due: "2025-09-12", status: "Submitted" },
+    { id: 1, title: "React Components", due: "Sep 15, 2025", status: "Pending" },
+    { id: 2, title: "Linked Lists", due: "Sep 20, 2025", status: "Submitted" },
+    { id: 3, title: "ML Project Proposal", due: "Sep 25, 2025", status: "Pending" },
   ];
 
   return (
-    <div className="text-white">
-      <h1 className="text-2xl font-bold mb-4">Assignments</h1>
-      <ul className="space-y-4">
-        {assignments.map((a) => (
-          <li
-            key={a.id}
-            className="p-4 bg-gray-800 rounded-lg shadow text-gray-200"
-          >
-            <h2 className="font-semibold text-white">{a.title}</h2>
-            <p className="text-gray-300">Due: {a.due}</p>
-            <p className="text-gray-400">Status: {a.status}</p>
-            <button className="mt-2 px-4 py-2 bg-blue-600 rounded text-white">
-              View Details
-            </button>
-          </li>
-        ))}
-      </ul>
+    <div className={`p-6 ${theme.background} ${theme.textSecondary}`}>
+      <h1 className={`text-2xl font-bold mb-4 ${theme.textPrimary}`}>Assignments</h1>
+      <p className="mb-4">View and submit assignments here.</p>
+
+      <div className="overflow-x-auto">
+        <table className={`min-w-full border border-gray-300 ${theme.card} ${theme.textPrimary}`}>
+          <thead className="bg-gray-200">
+            <tr>
+              <th className="p-3 text-left">Assignment</th>
+              <th className="p-3">Due Date</th>
+              <th className="p-3">Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            {assignments.map((assignment) => (
+              <tr key={assignment.id} className="border-t border-gray-300">
+                <td className="p-3">{assignment.title}</td>
+                <td className="p-3 text-center">{assignment.due}</td>
+                <td className="p-3 text-center">{assignment.status}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }

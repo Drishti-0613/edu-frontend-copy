@@ -1,21 +1,26 @@
+// src/pages/student/dashboard/DashboardHome.jsx
+import { THEME } from "@/config/themeConfig";
+const theme = THEME.light;
+
 export default function DashboardHome() {
   return (
-    <div>
-      <h1 className="text-2xl font-bold mb-4">Student Dashboard</h1>
-      <p className="mb-6">Welcome back, John Doe 👋</p>
+    <div className={`p-6 ${theme.background} ${theme.textSecondary}`}>
+      <h1 className={`text-2xl font-bold mb-6 ${theme.textPrimary}`}>Student Dashboard</h1>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div className="p-4 bg-gray-800 rounded-lg shadow">
-          <h2 className="font-semibold text-lg">Enrolled Courses</h2>
+        <div className={`p-4 rounded-lg shadow ${theme.card}`}>
+          <h2 className="text-lg font-semibold">Enrolled Courses</h2>
           <p className="text-3xl font-bold">5</p>
         </div>
-        <div className="p-4 bg-gray-800 rounded-lg shadow">
-          <h2 className="font-semibold text-lg">Assignments Due</h2>
+
+        <div className={`p-4 rounded-lg shadow ${theme.card}`}>
+          <h2 className="text-lg font-semibold">Assignments Due</h2>
           <p className="text-3xl font-bold">2</p>
         </div>
-        <div className="p-4 bg-gray-800 rounded-lg shadow">
-          <h2 className="font-semibold text-lg">Certificates</h2>
-          <p className="text-3xl font-bold">3</p>
+
+        <div className={`p-4 rounded-lg shadow ${theme.card}`}>
+          <h2 className="text-lg font-semibold">Quizzes Pending</h2>
+          <p className="text-3xl font-bold">1</p>
         </div>
       </div>
     </div>

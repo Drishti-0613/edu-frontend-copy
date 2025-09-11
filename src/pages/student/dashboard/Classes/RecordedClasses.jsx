@@ -1,20 +1,36 @@
+// src/pages/student/dashboard/RecordedClasses.jsx
+import { THEME } from "@/config/themeConfig";
+const theme = THEME.light;
+
 export default function RecordedClasses() {
   const recordings = [
-    { id: 1, title: "Intro to React", duration: "1h 20m" },
-    { id: 2, title: "Java Basics", duration: "2h 05m" },
+    { id: 1, title: "Intro to React", uploaded: "Sep 1, 2025" },
+    { id: 2, title: "Sorting Algorithms", uploaded: "Sep 3, 2025" },
+    { id: 3, title: "Cloud Basics", uploaded: "Sep 5, 2025" },
   ];
 
   return (
-    <div>
-      <h1 className="text-2xl font-bold mb-4">Recorded Classes</h1>
-      <div className="grid gap-4 md:grid-cols-2">
-        {recordings.map((rec) => (
-          <div key={rec.id} className="p-4 bg-gray-800 rounded-lg shadow">
-            <h2 className="font-semibold">{rec.title}</h2>
-            <p>Duration: {rec.duration}</p>
-            <button className="mt-2 px-4 py-2 bg-blue-600 rounded">Watch</button>
-          </div>
-        ))}
+    <div className={`p-6 ${theme.background} ${theme.textSecondary}`}>
+      <h1 className={`text-2xl font-bold mb-4 ${theme.textPrimary}`}>Recorded Classes</h1>
+      <p className="mb-4">Rewatch your past sessions here.</p>
+
+      <div className="overflow-x-auto">
+        <table className={`min-w-full border border-gray-300 ${theme.card} ${theme.textPrimary}`}>
+          <thead className="bg-gray-200">
+            <tr>
+              <th className="p-3 text-left">Class Title</th>
+              <th className="p-3">Uploaded</th>
+            </tr>
+          </thead>
+          <tbody>
+            {recordings.map((rec) => (
+              <tr key={rec.id} className="border-t border-gray-300">
+                <td className="p-3">{rec.title}</td>
+                <td className="p-3 text-center">{rec.uploaded}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
     </div>
   );
