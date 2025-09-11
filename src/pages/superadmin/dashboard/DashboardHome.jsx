@@ -1,5 +1,5 @@
 // src/pages/superadmin/dashboard/DashboardHome.jsx
-import StatsCard from "@/components/StatsCard";
+import StatsCard from "@/components/Statscard";
 
 export default function DashboardHome() {
   const stats = [
