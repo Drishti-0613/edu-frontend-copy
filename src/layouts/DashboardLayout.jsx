@@ -1,5 +1,5 @@
 // src/layouts/DashboardLayout.jsx
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { Menu } from "lucide-react";
 import { THEME } from "@/config/themeConfig";
@@ -8,6 +8,15 @@ import Sidebar from "@/components/Sidebar";
 export default function DashboardLayout({ role = "student" }) {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const theme = THEME.light; // Later dynamic by role
+  const navigate = useNavigate();
+
+  const handleRoleChange = (e) => {
+    const selectedRole = e.target.value;
+    if (selectedRole === "student") navigate("/student/dashboard");
+    if (selectedRole === "instructor") navigate("/instructor/dashboard");
+    if (selectedRole === "admin") navigate("/admin/dashboard");
+    if (selectedRole === "superadmin") navigate("/superadmin/dashboard");
+  };
 
   return (
     <div className={`flex h-screen ${theme.background}`}>
@@ -41,6 +50,18 @@ export default function DashboardLayout({ role = "student" }) {
           />
 
           <div className="flex items-center gap-4">
+            {/* Role Switcher */}
+            <select
+              value={role}
+              onChange={handleRoleChange}
+              className="border rounded-md px-3 py-1 bg-gray-100 text-gray-900"
+            >
+              <option value="student">Student</option>
+              <option value="instructor">Instructor</option>
+              <option value="admin">Admin</option>
+              <option value="superadmin">Super Admin</option>
+            </select>
+
             <button>🔔</button>
             <button>💬</button>
             <img
