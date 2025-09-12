@@ -1,6 +1,7 @@
 import { useState } from "react";
 import PasswordInput from "../../components/PasswordInput";
 import Button from "../../components/Button";
+import AuthLayout from "../../layouts/AuthLayout";
 
 export default function UpdatePassword() {
   const [currentPassword, setCurrentPassword] = useState("");
@@ -9,9 +10,8 @@ export default function UpdatePassword() {
   const [message, setMessage] = useState("");
 
   const handleSubmit = (e) => {
-    e.preventDefault(); // <-- add parentheses
+    e.preventDefault();
 
-    // Example validation
     if (newPassword !== confirmPassword) {
       setMessage("New passwords do not match!");
       return;
@@ -22,7 +22,6 @@ export default function UpdatePassword() {
       return;
     }
 
-    // Success message or API call
     setMessage("Password updated successfully!");
     setCurrentPassword("");
     setNewPassword("");
@@ -30,38 +29,34 @@ export default function UpdatePassword() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-[#242424] px-4">
-      <div className="w-full max-w-md p-6 bg-[#2A2A3D] rounded-lg shadow-md">
-        <h2 className="text-2xl font-bold mb-6 text-center text-white">
-          Update Password
-        </h2>
+    <AuthLayout>
+      <h2 className="text-2xl font-bold mb-6 text-center">Update Password</h2>
 
-        {message && (
-          <p className="mb-4 text-center text-sm text-green-400">{message}</p>
-        )}
+      {message && (
+        <p className="mb-4 text-center text-sm text-green-600">{message}</p>
+      )}
 
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <PasswordInput
-            label="Current Password"
-            value={currentPassword}
-            onChange={(e) => setCurrentPassword(e.target.value)}
-          />
+      <form onSubmit={handleSubmit} className="space-y-4">
+        <PasswordInput
+          label="Current Password"
+          value={currentPassword}
+          onChange={(e) => setCurrentPassword(e.target.value)}
+        />
 
-          <PasswordInput
-            label="New Password"
-            value={newPassword}
-            onChange={(e) => setNewPassword(e.target.value)}
-          />
+        <PasswordInput
+          label="New Password"
+          value={newPassword}
+          onChange={(e) => setNewPassword(e.target.value)}
+        />
 
-          <PasswordInput
-            label="Confirm New Password"
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
-          />
+        <PasswordInput
+          label="Confirm New Password"
+          value={confirmPassword}
+          onChange={(e) => setConfirmPassword(e.target.value)}
+        />
 
-          <Button type="submit" text="Save Changes" />
-        </form>
-      </div>
-    </div>
+        <Button type="submit">Save Changes</Button>
+      </form>
+    </AuthLayout>
   );
 }
