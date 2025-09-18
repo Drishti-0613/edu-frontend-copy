@@ -1,4 +1,4 @@
-import { THEME } from "@/config/themeConfig";
+import { THEME } from "@/config/themeConfig.js";
 
 export default function DiscussionForum() {
   const theme = THEME.light;

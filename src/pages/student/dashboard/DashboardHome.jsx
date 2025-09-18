@@ -1,26 +1,28 @@
-// src/pages/student/dashboard/DashboardHome.jsx
-import { THEME } from "@/config/themeConfig";
-const theme = THEME.light;
+import React from "react";
+import Statscard from "../../../components/Statscard";
 
-export default function DashboardHome() {
+export default function DashboardHome(){
+  const stats = [
+    { title: "Enrolled students", value: "2,350", delta: "+8.2%" },
+    { title: "Active courses", value: "82", delta: "+1" },
+    { title: "Assignments due", value: "7", delta: "-1" },
+  ];
+
   return (
-    <div className={`p-6 ${theme.background} ${theme.textSecondary}`}>
-      <h1 className={`text-2xl font-bold mb-6 ${theme.textPrimary}`}>Student Dashboard</h1>
+    <div>
+      <div className="mb-6">
+        <h1 className="text-2xl font-semibold">Dashboard</h1>
+        <p className="text-sm text-neutral-500">Summary of recent platform activity</p>
+      </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div className={`p-4 rounded-lg shadow ${theme.card}`}>
-          <h2 className="text-lg font-semibold">Enrolled Courses</h2>
-          <p className="text-3xl font-bold">5</p>
-        </div>
+      <div className="grid gap-4 grid-cols-1 md:grid-cols-3">
+        {stats.map((s, idx) => <Statscard key={idx} {...s} />)}
+      </div>
 
-        <div className={`p-4 rounded-lg shadow ${theme.card}`}>
-          <h2 className="text-lg font-semibold">Assignments Due</h2>
-          <p className="text-3xl font-bold">2</p>
-        </div>
-
-        <div className={`p-4 rounded-lg shadow ${theme.card}`}>
-          <h2 className="text-lg font-semibold">Quizzes Pending</h2>
-          <p className="text-3xl font-bold">1</p>
+      <div className="mt-6">
+        <div className="p-4 bg-white rounded-xl shadow-subtle">
+          <h3 className="text-lg font-medium">Recent activity</h3>
+          <p className="text-sm text-neutral-500 mt-2">No recent events — this is a demo block you can replace with cards or tables.</p>
         </div>
       </div>
     </div>

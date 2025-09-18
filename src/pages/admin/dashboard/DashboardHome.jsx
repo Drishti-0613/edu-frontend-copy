@@ -1,6 +1,6 @@
 // src/pages/admin/dashboard/DashboardHome.jsx
 import StatsCard from "@/components/Statscard";
-import { THEME } from "@/config/themeConfig";
+import { THEME } from "@/config/themeConfig.js";
 
 export default function DashboardHome() {
   const theme = THEME.light;

@@ -1,19 +1,16 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
-import { THEME } from "../config/themeConfig";
+import Navbar from "../components/Navbar";
 
-export default function AuthLayout() {
+export default function AuthLayout(){
   return (
-    <div
-      className={`min-h-screen flex items-center justify-center ${THEME.light.background} ${THEME.light.textPrimary} font-sans`}
-    >
-      {/* Centered card wrapper */}
-      <div
-        className={`${THEME.light.card} p-8 rounded-xl shadow-lg w-full max-w-md`}
-      >
-        {/* 👇 This is where Login, Signup, ForgotPassword, etc. will render */}
-        <Outlet />
-      </div>
+    <div className="min-h-screen bg-gradient-to-b from-surface-100 to-white">
+      <Navbar />
+      <main className="container-max py-12">
+        <div className="max-w-md mx-auto">
+          <Outlet />
+        </div>
+      </main>
     </div>
   );
 }

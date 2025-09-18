@@ -1,5 +1,5 @@
 // src/pages/student/dashboard/ProfileSettings/ProfileSettings.jsx
-import { THEME } from "@/config/themeConfig";
+import { THEME } from "@/config/themeConfig.js";
 const theme = THEME.light;
 
 export default function ProfileSettings() {

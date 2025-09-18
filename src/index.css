@@ -2,97 +2,39 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Base styles */
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+/* Design tokens as CSS variables for easy theme tweaks */
+:root{
+  --color-primary: #1aa0ff;
+  --color-bg: #ffffff;
+  --color-surface: #fbfcfd;
+  --color-muted: #6b7280;
+  --radius-lg: 12px;
+  --radius-sm: 8px;
+  --glass: rgba(255,255,255,0.6);
+}
 
-  /* Default Light Theme (like your screenshot) */
-  color: #213547; /* Dark readable text */
-  background-color: #f3f6fd; /* Soft light background */
+/* small helpers */
+.bg-glass {
+  background: linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,255,255,0.5));
+  backdrop-filter: blur(6px);
+}
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
+/* utilities for consistent container */
+.container-max {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+/* Prose / accessibility */
+body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Links */
-a {
-  font-weight: 500;
-  color: #2563eb; /* Tailwind blue-600 */
-  text-decoration: none;
-}
-a:hover {
-  color: #1d4ed8; /* Tailwind blue-700 */
-}
-
-/* Body */
-body {
-  margin: 0;
-  min-width: 320px;
-  min-height: 100vh;
-  display: block;
-  background-color: #f3f6fd; /* Ensure full-page bg */
-  color: #213547; /* Default dark text */
-}
-
-/* Headings */
-h1, h2, h3, h4, h5, h6 {
-  color: #1e3a8a; /* Darker blue for titles */
-  font-weight: 600;
-}
-
-/* Buttons */
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background: linear-gradient(to right, #3b82f6, #2563eb); /* Blue gradient */
-  color: white;
-  cursor: pointer;
-  transition: background 0.3s, border-color 0.25s;
-}
-button:hover {
-  background: linear-gradient(to right, #2563eb, #1d4ed8);
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-/* Muted text (like description under Welcome Back) */
-.text-muted {
-  color: #6b7280; /* Gray-500 */
-}
-
-/* Dark Mode (optional) */
-@media (prefers-color-scheme: dark) {
-  :root {
-    color: rgba(255, 255, 255, 0.87);
-    background-color: #1f2937; /* Gray-800 */
-  }
-
-  body {
-    background-color: #1f2937;
-    color: rgba(255, 255, 255, 0.87);
-  }
-
-  a {
-    color: #60a5fa; /* Light blue */
-  }
-  a:hover {
-    color: #3b82f6;
-  }
-
-  button {
-    background: linear-gradient(to right, #60a5fa, #3b82f6);
-  }
-  button:hover {
-    background: linear-gradient(to right, #3b82f6, #2563eb);
-  }
+/* small responsive tweaks */
+@media (min-width: 1024px){
+  .sidebar-collapsed { width: 72px; }
 }

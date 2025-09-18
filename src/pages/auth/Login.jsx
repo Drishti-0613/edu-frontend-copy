@@ -1,66 +1,45 @@
-// src/pages/auth/Login.jsx
 import React, { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import InputField from "../../components/InputField";
+import PasswordInput from "../../components/PasswordInput";
+import Button from "../../components/Button";
 
-export default function Login() {
+export default function Login(){
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const navigate = useNavigate();
-  const [role, setRole] = useState("student");
 
-  const handleLogin = (e) => {
+  async function handleSubmit(e){
     e.preventDefault();
-    if (role === "student") navigate("/student/dashboard");
-    if (role === "instructor") navigate("/instructor/dashboard");
-    if (role === "admin") navigate("/admin/dashboard");
-    if (role === "superadmin") navigate("/superadmin/dashboard");
-  };
+    try {
+      // call your auth API (backend)
+      // await authApi.login({ email, password });
+      // redirect to dashboard
+      navigate("/dashboard");
+    } catch (err) {
+      alert("Login failed");
+    }
+  }
 
   return (
-    <>
-      <h2 className="text-2xl font-bold mb-4 text-center">Login</h2>
-      <form onSubmit={handleLogin} className="space-y-3">
-        <input
-          type="email"
-          placeholder="Email"
-          className="w-full border p-2 rounded"
-          required
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          className="w-full border p-2 rounded"
-          required
-        />
+    <div className="bg-white p-8 rounded-xl shadow-subtle">
+      <h2 className="text-2xl font-semibold mb-1">Welcome back</h2>
+      <p className="text-sm text-neutral-500 mb-6">Sign in to continue to the dashboard</p>
 
-        <select
-          value={role}
-          onChange={(e) => setRole(e.target.value)}
-          className="w-full border p-2 rounded"
-        >
-          <option value="student">Student</option>
-          <option value="instructor">Instructor</option>
-          <option value="admin">Admin</option>
-          <option value="superadmin">SuperAdmin</option>
-        </select>
-
-        <button
-          type="submit"
-          className="w-full bg-blue-600 text-white py-2 rounded"
-        >
-          Login
-        </button>
+      <form onSubmit={handleSubmit} className="space-y-4">
+        <InputField label="Email" value={email} onChange={e=>setEmail(e.target.value)} placeholder="you@example.com" />
+        <PasswordInput label="Password" value={password} onChange={e=>setPassword(e.target.value)} />
+        <div className="flex items-center justify-between">
+          <label className="flex items-center gap-2 text-sm">
+            <input type="checkbox" className="h-4 w-4" />
+            Remember me
+          </label>
+          <a href="/forgot" className="text-sm text-primary-600">Forgot?</a>
+        </div>
+        <div>
+          <Button type="submit" className="w-full">Sign in</Button>
+        </div>
       </form>
-
-      <div className="mt-4 text-sm text-center">
-        <Link to="/auth/forgot-password" className="text-blue-600">
-          Forgot Password?
-        </Link>
-      </div>
-      <div className="mt-2 text-sm text-center">
-        Don’t have an account?{" "}
-        <Link to="/auth/signup" className="text-blue-600">
-          Sign up
-        </Link>
-      </div>
-    </>
+    </div>
   );
 }
